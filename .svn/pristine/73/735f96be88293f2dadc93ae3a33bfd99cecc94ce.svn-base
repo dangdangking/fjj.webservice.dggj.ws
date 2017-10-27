@@ -1,0 +1,25 @@
+package com.spt.ws.client;
+
+import java.io.IOException;
+
+public interface IClientWY {
+	/**
+	 * 卸载失败信息
+	 */
+	public void getXZSB();
+	
+	/**
+	 * 失败分拣信息
+	 */
+	public void getSBFJ();
+	/**
+	 * 路由决策
+	 */
+	public void getRoute();
+	
+	/**
+	 * 齐格封发信息
+	 */
+	public void getQGFF();
+	
+}

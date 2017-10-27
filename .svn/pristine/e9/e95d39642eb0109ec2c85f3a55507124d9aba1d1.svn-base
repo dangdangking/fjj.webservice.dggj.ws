@@ -1,0 +1,63 @@
+package com.spt.ws.client;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.client.OperationClient;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.rpc.client.RPCServiceClient;
+
+
+import com.spt.core.Property;
+
+public class WebServiceBase {
+	public String callWS(String mothed,String parm) {
+		try{
+		RPCServiceClient serviceClient = new RPCServiceClient();
+		Options options = serviceClient.getOptions();
+		EndpointReference targetEPR = new EndpointReference(Property.getProperty("endpoint"));
+		options.setTo( targetEPR );
+		options.setTimeOutInMilliSeconds( 90000 );
+		QName opName = new QName(Property.getProperty("namespaceuri"), mothed);
+		Object[] results = serviceClient.invokeBlocking( opName, new Object[]{parm},  new Class[] {String.class} );
+
+		String res = (String)results[0];
+		return res;
+		}catch(Exception e){
+			
+			return Property.getProperty("endpoint") + "|" +Property.getProperty("namespaceuri") + "|" + e.getMessage();
+		}
+	}
+	
+	public String callqigeff(String parm) throws MalformedURLException {
+	    URL url = new URL(Property.getProperty("wsurl"));  
+	    CommFJJ commFJJ = new CommFJJ(url);
+	    String rtn = commFJJ.getCommFJJServiceImplPort().qigeff(parm);
+	    
+        return rtn;
+    }
+	
+	public String callxzsb(String parm) throws MalformedURLException{
+        URL url = new URL(Property.getProperty("wsurl"));  
+        CommFJJ commFJJ = new CommFJJ(url);
+        String rtn = commFJJ.getCommFJJServiceImplPort().qigeff(parm);
+        
+        return rtn;
+    }
+	
+	public String callsbfj(String parm) throws MalformedURLException{
+        URL url = new URL(Property.getProperty("wsurl"));  
+        CommFJJ commFJJ = new CommFJJ(url);
+        String rtn = commFJJ.getCommFJJServiceImplPort().getExcetionInfo(parm);
+        
+        return rtn;
+    }
+	
+}

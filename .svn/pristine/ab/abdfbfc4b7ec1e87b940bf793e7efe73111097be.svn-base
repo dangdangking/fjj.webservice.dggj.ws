@@ -1,0 +1,15 @@
+package com.spt.ws.dao;
+
+import java.util.List;
+import java.util.Map;
+
+
+public interface IDataclean {
+	public void dataclean() throws Exception;
+
+	void datadelete() throws Exception;
+
+	void hisDatadelete() throws Exception;
+
+	
+}

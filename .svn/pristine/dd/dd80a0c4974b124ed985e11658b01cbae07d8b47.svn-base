@@ -1,0 +1,11 @@
+jdbc.url=jdbc:oracle:thin:@10.126.22.213:1521:dev11g
+jdbc.user=sz_sorter
+jdbc.passwd=sz_sorter
+pool.initialSize=7
+pool.minPoolSize=7
+pool.maxPoolSize=300
+pool.acquireIncrement=5
+pool.idleConnectionTestPeriod=60
+pool.maxIdleTime=60
+pool.autoCommitOnClose=false
+pool.checkoutTimeout=20

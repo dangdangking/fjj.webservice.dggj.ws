@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="  
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx-4.1.xsd  
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-4.1.xsd  
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.2.xsd
+http://www.springframework.org/schema/task  
+http://www.springframework.org/schema/task/spring-task-4.2.xsd ">
+
+	<!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" scope="singleton">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:*.properties</value>
+				<value>/WEB-INF/config/*.properties</value>
+			</list>
+		</property>
+	</bean> -->
+    <bean id="propertyConfigurer" class="com.spt.core.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:*.properties</value>
+				<value>/WEB-INF/config/*.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 配置C3P0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.passwd}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${pool.initialSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${pool.maxPoolSize}</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>${pool.acquireIncrement}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>${pool.idleConnectionTestPeriod}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${pool.maxIdleTime}</value>
+		</property>
+		<property name="autoCommitOnClose">
+			<value>${pool.autoCommitOnClose}</value>
+		</property>
+		<property name="checkoutTimeout">
+            <value>${pool.checkoutTimeout}</value>
+        </property>
+	</bean>
+	<!-- DataSourceTransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	<tx:annotation-driven />
+	<bean id="commonService" class="com.spt.fjj.service.models.common.CommonService"
+		scope="prototype" abstract="true">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 扫包 -->
+	<context:component-scan base-package="com.spt" />
+
+	<context:annotation-config />
+	<!-- 定时任务 -->
+	<task:annotation-driven />
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
+
+	<bean id="Tasks" class="com.spt.ws.client.ClientWYImpl"></bean>
+	<bean id="CleanTasks" class="com.spt.ws.dao.impl.dataCleanImpl"></bean>
+		
+ 		<!-- 落格信息 -->
+		<!-- <task:scheduled-tasks> <task:scheduled ref="Tasks" method="getXZSB" cron="0/2 * * * * ? " /> </task:scheduled-tasks>-->
+		<task:scheduled-tasks> <task:scheduled ref="Tasks" method="test" cron="0/5 * * * * ? " /> </task:scheduled-tasks> 
+<!-- 		<task:scheduled-tasks> <task:scheduled ref="Tasks" method="getQGFF" cron="0/2 * * * * ? " /> </task:scheduled-tasks> -->
+		
+		
+		
+		
+	<bean id="HelloWs" class="com.spt.ws.services.CommFjjServiceImpl"></bean>
+</beans>

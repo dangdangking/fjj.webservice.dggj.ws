@@ -1,0 +1,143 @@
+
+package com.spt.ws.client;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the com.spt.ws.client package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _GetExcetionInfo_QNAME = new QName("http://service.ccs.post.com/", "getExcetionInfo");
+    private final static QName _GetLyjcResponse_QNAME = new QName("http://service.ccs.post.com/", "getLyjcResponse");
+    private final static QName _GetLyjc_QNAME = new QName("http://service.ccs.post.com/", "getLyjc");
+    private final static QName _QigeffResponse_QNAME = new QName("http://service.ccs.post.com/", "qigeffResponse");
+    private final static QName _GetExcetionInfoResponse_QNAME = new QName("http://service.ccs.post.com/", "getExcetionInfoResponse");
+    private final static QName _Qigeff_QNAME = new QName("http://service.ccs.post.com/", "qigeff");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.spt.ws.client
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetExcetionInfoResponse }
+     * 
+     */
+    public GetExcetionInfoResponse createGetExcetionInfoResponse() {
+        return new GetExcetionInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link Qigeff }
+     * 
+     */
+    public Qigeff createQigeff() {
+        return new Qigeff();
+    }
+
+    /**
+     * Create an instance of {@link GetExcetionInfo }
+     * 
+     */
+    public GetExcetionInfo createGetExcetionInfo() {
+        return new GetExcetionInfo();
+    }
+
+    /**
+     * Create an instance of {@link GetLyjcResponse }
+     * 
+     */
+    public GetLyjcResponse createGetLyjcResponse() {
+        return new GetLyjcResponse();
+    }
+
+    /**
+     * Create an instance of {@link QigeffResponse }
+     * 
+     */
+    public QigeffResponse createQigeffResponse() {
+        return new QigeffResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLyjc }
+     * 
+     */
+    public GetLyjc createGetLyjc() {
+        return new GetLyjc();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetExcetionInfo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "getExcetionInfo")
+    public JAXBElement<GetExcetionInfo> createGetExcetionInfo(GetExcetionInfo value) {
+        return new JAXBElement<GetExcetionInfo>(_GetExcetionInfo_QNAME, GetExcetionInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLyjcResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "getLyjcResponse")
+    public JAXBElement<GetLyjcResponse> createGetLyjcResponse(GetLyjcResponse value) {
+        return new JAXBElement<GetLyjcResponse>(_GetLyjcResponse_QNAME, GetLyjcResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLyjc }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "getLyjc")
+    public JAXBElement<GetLyjc> createGetLyjc(GetLyjc value) {
+        return new JAXBElement<GetLyjc>(_GetLyjc_QNAME, GetLyjc.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QigeffResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "qigeffResponse")
+    public JAXBElement<QigeffResponse> createQigeffResponse(QigeffResponse value) {
+        return new JAXBElement<QigeffResponse>(_QigeffResponse_QNAME, QigeffResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetExcetionInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "getExcetionInfoResponse")
+    public JAXBElement<GetExcetionInfoResponse> createGetExcetionInfoResponse(GetExcetionInfoResponse value) {
+        return new JAXBElement<GetExcetionInfoResponse>(_GetExcetionInfoResponse_QNAME, GetExcetionInfoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Qigeff }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://service.ccs.post.com/", name = "qigeff")
+    public JAXBElement<Qigeff> createQigeff(Qigeff value) {
+        return new JAXBElement<Qigeff>(_Qigeff_QNAME, Qigeff.class, null, value);
+    }
+
+}
